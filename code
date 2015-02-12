@@ -1,0 +1,54 @@
+//Recursive Sketch by Amruta Buge (amrutabuge.com)
+//make sure you add the video file "water.mov" in a folder named data inside the sketch folder
+
+import processing.video.*;
+Movie soper;
+PVector center;
+float rotation = 0;
+ 
+void setup() {
+  size(1080,1080,P3D);
+  frame.setResizable(true);
+  smooth();
+  noCursor();
+  rectMode(RADIUS);
+  noFill();
+  stroke(255);
+  strokeWeight(3);
+  center = new PVector(width/2, height/2);//center of the screen
+  soper = new Movie(this, "water.mov"); //movie
+  soper.loop();
+}
+ 
+void draw() {
+  noCursor();
+  drawFractal(center, width/2, rotation); //x, y, num
+  rotation += .001;
+  image(soper, 0, 0);
+}
+ 
+void drawFractal(PVector center_a, float side, float roti) {
+  pushMatrix();
+  translate(center_a.x, center_a.x);
+  rotate(roti);
+  
+  point(30, 0, 50);
+  point(50, 20, roti);
+  point(50, 75, roti);
+  point(30, 75, 10);
+  
+  point(80, 20, 200);
+  point(80, 75, 250);
+  
+  point(80, 75, 350);
+  point(50, 50, mouseY);
+  
+  if (side > 1)
+    drawFractal(new PVector(0, 0), sqrt(2)*side/2, roti);
+  popMatrix();
+   
+}
+
+void movieEvent(Movie m){
+  m.read();
+}
