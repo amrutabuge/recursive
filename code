@@ -1,5 +1,6 @@
 //Recursive Sketch by Amruta Buge (amrutabuge.com)
-//make sure you add the video file "water.mov" in a folder named data inside the sketch folder
+//Video file named "water.mov" is available in the releases of this repository
+//Make sure you add the video file "water.mov" in a folder named data inside the sketch folder
 
 import processing.video.*;
 Movie soper;
